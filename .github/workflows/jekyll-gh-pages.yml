@@ -41,4 +41,4 @@ jobs:
           git add .
           git commit -m "Deploy React App"
           # Push to gh-pages branch
-          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/<Shivam Sharma>/<portfolio>.git gh-pages
+          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/<shivam-sharma>/<portfolio>.git gh-pages
