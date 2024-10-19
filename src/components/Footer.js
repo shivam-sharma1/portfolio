@@ -15,7 +15,7 @@ function Footer() {
           <h3>Designed and Developed by Shivam Sharma</h3>
         </Col>
         <Col md="4" className="footer-copywright">
-          <h3></h3>
+          <h3>WORK HARD, CODE HARDER</h3>
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
