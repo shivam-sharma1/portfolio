@@ -7,8 +7,14 @@ on:
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
+    needs: build
+    
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -30,15 +36,5 @@ jobs:
           git config --global user.name "Shivam Sharma"
 
       - name: Deploy to GitHub Pages
-        run: |
-          # Create a new branch named gh-pages
-          git checkout -b gh-pages
-          # Remove all files from the current branch
-          git rm -rf .
-          # Copy the contents of the build directory to the root
-          cp -R build/* .
-          # Add and commit the changes
-          git add .
-          git commit -m "Deploy React App"
-          # Push to gh-pages branch
-          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/<shivam-sharma1>/<my-portfolio>.git gh-pages
+        id: deployment
+        uses: actions/deploy-pages@v4
