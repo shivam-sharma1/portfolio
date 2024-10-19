@@ -52,8 +52,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: portfolio  
 
       - name: Start React App
         run: npm run start
-        working-directory: portfolio  
