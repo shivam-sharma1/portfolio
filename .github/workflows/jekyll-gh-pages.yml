@@ -37,16 +37,16 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-        # run: |
-        #   # Create a new branch named gh-pages
-        #   git checkout -b gh-pages
-        #   # Remove all files from the current branch
-        #   git rm -rf .
-        #   # Copy the contents of the build directory to the root
-        #   cp -R build/* .
-        #   # Add and commit the changes
-        #   git add .
-        #   git commit -m "Deploy React App"
-        #   # Push to gh-pages branch
-        #   git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/<shivam-sharma>/<portfolio>.git gh-pages
+        # uses: actions/deploy-pages@v4
+        run: |
+          # Create a new branch named gh-pages
+          git checkout -b gh-pages
+          # Remove all files from the current branch
+          git rm -rf .
+          # Copy the contents of the build directory to the root
+          cp -R build/* .
+          # Add and commit the changes
+          git add .
+          git commit -m "Deploy React App"
+          # Push to gh-pages branch
+          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/<shivam-sharma>/<portfolio>.git gh-pages
