@@ -36,10 +36,8 @@ jobs:
           git config --global user.name "Shivam Sharma"
 
       - name: Deploy to GitHub Pages
-<<<<<<< HEAD
         id: deployment
         uses: actions/deploy-pages@v4
-=======
         run: |
           # Create a new branch named gh-pages
           git checkout -b gh-pages
@@ -52,4 +50,3 @@ jobs:
           git commit -m "Deploy React App"
           # Push to gh-pages branch
           git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/<shivam-sharma>/<portfolio>.git gh-pages
->>>>>>> 807db8576dc83257846ec6579725749087e65c7f
