@@ -11,7 +11,7 @@ function AboutCard() {
             Hi Everyone, I am <span className="purple">Shivam Sharma </span>
             from <span className="purple"> Jaipur(Raj.), India.</span>
             <br />
-            I am currently employed as a Software Engineer at Mercedes-Benz Research and Development India and living in Bangalore.
+            I am currently employed as a Sr. Software Engineer at BMW Techworks India and living in Pune.
             <br />
             I have completed B.Tech in Computer Science and Engineering from JUET, Guna.
             <br />
@@ -27,6 +27,26 @@ function AboutCard() {
             </li>
             <li className="about-activity">
               <ImPointRight /> Travelling
+            </li>
+          </ul>
+          <p style={{ textAlign: "justify" }}>
+          Past Employment
+          </p>
+          <ul>
+            <li className="about-activity">
+              <ImPointRight /> Sr. Software Engineer, BMW TechWorks India
+              <br />
+              <small><i>May 2025 - Present, Pune</i></small>
+            </li>
+            <li className="about-activity">
+              <ImPointRight /> Technical Consultant, Mercedes-Benz Research and Development India
+              <br />
+              <small><i>April 2023 - May 2025, Bangalore</i></small>
+            </li>
+            <li className="about-activity">
+              <ImPointRight /> Member of Technical Staff 1, alphastream.ai
+              <br />
+              <small><i>June 2022 - April 2023, Bangalore</i></small>
             </li>
           </ul>
 
