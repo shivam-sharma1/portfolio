@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-=======
 # Builds the React portfolio app and deploys it to GitHub Pages.
-# The REACT_APP_API_URL secret tells the frontend where the Render backend lives.
->>>>>>> feature
+# REACT_APP_API_URL secret tells the frontend where the Render backend lives.
 name: Deploy React App to GitHub Pages
 
 on:
   push:
-<<<<<<< HEAD
-    branches:
-      - main  # or whatever your default branch is
-
-jobs:
-=======
-    branches: ["feature"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -44,11 +35,9 @@ jobs:
         working-directory: portfolio
 
       - name: Build React app
-        # REACT_APP_API_URL is a GitHub repo secret — never hard-coded here.
-        # Set it in: Settings → Secrets and variables → Actions → New repository secret
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-          CI: false          # prevents warnings from being treated as build errors
+          CI: false
         run: npm run build
         working-directory: portfolio
 
@@ -60,53 +49,13 @@ jobs:
         with:
           path: portfolio/build
 
->>>>>>> feature
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
-
     needs: build
-    
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Specify the version of Node.js you want
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Project
-        run: npm run build
-      
-      - name: Configure Git
-        run: |
-          git config --global user.email "shivam0sharma85@gmail.com"
-          git config --global user.name "Shivam Sharma"
-
       - name: Deploy to GitHub Pages
         id: deployment
-<<<<<<< HEAD
-        # uses: actions/deploy-pages@v4
-        run: |
-          # Create a new branch named gh-pages
-          git checkout -b gh-pages
-          # Remove all files from the current branch
-          git rm -rf .
-          # Copy the contents of the build directory to the root
-          cp -R build/* .
-          # Add and commit the changes
-          git add .
-          git commit -m "Deploy React App"
-          # Push to gh-pages branch
-          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/<shivam-sharma>/<portfolio>.git gh-pages
-=======
         uses: actions/deploy-pages@v4
-
->>>>>>> feature
