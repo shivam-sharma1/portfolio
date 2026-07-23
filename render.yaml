@@ -1,0 +1,37 @@
+# Render Blueprint — deploys the portfolio backend as a Node.js web service.
+# Secrets (DB_USERNAME, DB_PASSWORD, CORS_ORIGIN) are set in the Render dashboard,
+# NOT here. This file only declares which variables exist.
+
+services:
+  - type: web
+    name: portfolio-server
+    env: node
+    region: oregon          # free tier is available in oregon / frankfurt
+    rootDir: server
+    buildCommand: npm install --production
+    startCommand: npm start
+    healthCheckPath: /api/health
+
+    envVars:
+      # ---- Secrets: set these in Render dashboard → Environment tab ----
+      - key: DB_USERNAME
+        sync: false         # "sync: false" = Render prompts you to fill this in
+
+      - key: DB_PASSWORD
+        sync: false
+
+      - key: CORS_ORIGIN
+        sync: false         # e.g. https://shivam-sharma1.github.io
+
+      # ---- Non-secret config (safe to commit) ----
+      - key: DB_HOST
+        value: portfolio.gbiris4.mongodb.net
+
+      - key: DB_NAME
+        value: portfolio
+
+      - key: DB_APP_NAME
+        value: Portfolio
+
+      - key: NODE_ENV
+        value: production
