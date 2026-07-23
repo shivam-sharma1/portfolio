@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://shivam-sharma1.github.io/portfolio/",
+  "homepage": "https://shivam-sharma1.github.io/portfolio",
   "dependencies": {
     "@react-pdf/renderer": "^2.2.0",
     "@testing-library/jest-dom": "^5.16.2",
@@ -28,20 +28,9 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+    "test": "react-scripts     "test": "react-scripts     "test": "react-scripts     "test": "react-scripts     "te  "react-app",
+      "react      "react      "},
+      "react    : {      "react    : {      "react    : {      "react    : {   "not op_mini all"
     ],
     "development": [
       "last 1 chrome version",
