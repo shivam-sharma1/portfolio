@@ -2,12 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/myImg.jpeg";
 import Tilt from "react-parallax-tilt";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
 
 function Home2() {
   return (
@@ -16,96 +10,50 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+              Modern <span className="purple">Engineering Approach</span>
             </h1>
             <p className="home-about-body">
-              I fell in love with programming and I have at least learnt
-              something, I think… 🤷‍♂️
+              I build production-grade software systems combining specialized expertise,
+              rigorous engineering practices, and AI-augmented development for rapid, high-quality delivery.
               <br />
-              <br />I am fluent in classics like
+              <br />Core strengths include
               <i>
-                <b className="purple"> C++, Java, JavaScript, Python. </b>
+                <b className="purple"> JavaScript, TypeScript, Node.js, React, Java, Python, SQL, and cloud-native systems </b>
               </i>
+              with hands-on experience in high-impact product and platform teams.
               <br />
-              <br />
-              My field of Interest's are building new &nbsp;
+              <br />I specialize in
               <i>
-                <b className="purple">Web Technologies and Products </b> and
-                also in areas related to{" "}
                 <b className="purple">
-                  Machine learning.
+                  end-to-end delivery, API architecture, distributed systems, CI/CD automation,
+                  production observability, and performance optimization.
                 </b>
               </i>
               <br />
               <br />
-              Whenever possible, I also apply my passion for developing products
-              with <b className="purple">Node.js</b> and
-              <i>
-                <b className="purple">
-                  {" "}
-                  Modern Javascript Library and Frameworks
-                </b>
-              </i>
-              &nbsp; like
-              <i>
-                <b className="purple"> React.js and Next.js</b>
-              </i>
+              Current work emphasizes rapid iteration cycles, security-by-design,
+              quality assurance automation, and engineering efficiency without compromising standards.
             </p>
+
+            <div className="credibility-grid">
+              <div className="credibility-item">
+                <h3>Rapid Quality Delivery</h3>
+                <p>Architecture-first, iterative execution from concept through production with measurable outcomes.</p>
+              </div>
+              <div className="credibility-item">
+                <h3>Modern Systems Design</h3>
+                <p>Distributed-first, API-native, cloud-optimized architectures built for scale and reliability.</p>
+              </div>
+              <div className="credibility-item">
+                <h3>Production Excellence</h3>
+                <p>Observability, automated testing, deployment hardening, and operational sustainability.</p>
+              </div>
+            </div>
           </Col>
           <Col md={4} className="myAvtar">
             <Tilt>
               <img src={myImg}  style={{ borderRadius: "50%", width: "300px", height: "300px"}} className="img-fluid" alt="avatar" />
             </Tilt>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
-            <p>
-              Feel free to <span className="purple">connect </span>with me
-            </p>
-            <ul className="home-about-social-links">
-              <li className="social-icons">
-                <a
-                  href="https://github.com/shivam-sharma1"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiFillGithub />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://twitter.com/ShivamS41798084"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiOutlineTwitter />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.linkedin.com/in/shivam0sharma85/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <FaLinkedinIn />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.instagram.com/wings._of_change"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                >
-                  <AiFillInstagram />
-                </a>
-              </li>
-            </ul>
           </Col>
         </Row>
       </Container>
