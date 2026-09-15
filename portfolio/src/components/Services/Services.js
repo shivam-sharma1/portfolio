@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
+import { openInquiryModal } from "../FloatingInquiry";
 
 const expertiseList = [
   {
@@ -127,9 +128,13 @@ function Expertise() {
           <p>
             Looking for architecture review or engineering collaboration?
           </p>
-          <a href="#contact" className="services-cta-link">
+          <button
+            type="button"
+            className="services-cta-link services-cta-button"
+            onClick={openInquiryModal}
+          >
             Start a Conversation <FiArrowRight />
-          </a>
+          </button>
         </div>
       </Container>
     </Container>

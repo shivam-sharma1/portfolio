@@ -308,6 +308,10 @@ a:focus {
   border: 1px solid #121212;
 }
 
+.hero-cta-button {
+  appearance: none;
+}
+
 .hero-cta-primary {
   background: #121212;
   color: #f6f4ef;
@@ -608,11 +612,20 @@ a:focus {
   border-bottom: 1px solid #121212;
 }
 
+.services-cta-button {
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding: 0;
+}
+
 .services-cta-link:hover {
   color: #121212;
 }
 
 .tech-icons {
+  position: relative;
   font-size: 4rem !important;
   margin: 10px !important;
   padding: 14px !important;
@@ -621,9 +634,42 @@ a:focus {
   border-radius: 2px !important;
   background: #ffffff;
   transition: all 0.2s ease !important;
+  cursor: default;
+  outline: none;
 }
 
-.tech-icons:hover {
+.tech-icons::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%);
+  background: rgba(18, 18, 18, 0.96);
+  color: #ffffff;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tech-icons:hover::after,
+.tech-icons:focus::after,
+.tech-icons:active::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.tech-icons:hover,
+.tech-icons:focus,
+.tech-icons:active {
   transform: translateY(-2px) !important;
   border-color: #bcb3a7 !important;
 }
@@ -634,6 +680,53 @@ a:focus {
   font-weight: 700;
   padding-top: 20px;
   padding-bottom: 16px;
+}
+
+.resume-hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.resume-intro {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.resume-download-btn {
+  margin-top: 14px;
+}
+
+.resume-viewer-row {
+  margin-top: 6px;
+}
+
+.resume-document-shell {
+  background: #ffffff;
+  border: 1px solid var(--stroke);
+  padding: 22px 16px;
+}
+
+.resume-document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.resume-page-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.resume-page-wrap .react-pdf__Page {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.resume-page-wrap .react-pdf__Page__canvas {
+  max-width: 100%;
+  height: auto !important;
 }
 
 .resume .resume-item {
@@ -795,8 +888,60 @@ a:focus {
   margin-bottom: 8px;
 }
 
+.query-panel-header {
+  margin-bottom: 6px;
+}
+
 .query-form {
   padding: 18px;
+}
+
+.query-panel .query-form {
+  margin-bottom: 0;
+}
+
+.floating-inquiry-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1050;
+  background: #121212 !important;
+  border: 1px solid #121212 !important;
+  color: #f6f4ef !important;
+  border-radius: 999px !important;
+  padding: 12px 18px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.floating-inquiry-btn:hover {
+  background: #2f2f2f !important;
+  border-color: #2f2f2f !important;
+}
+
+.inquiry-modal {
+  max-width: 760px !important;
+}
+
+.inquiry-modal-content {
+  border: 1px solid var(--stroke) !important;
+  border-radius: 2px !important;
+  background: #f6f4ef !important;
+}
+
+.inquiry-modal-content .modal-header,
+.inquiry-modal-content .modal-body {
+  border: none;
+}
+
+.inquiry-modal-content .modal-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+}
+
+.inquiry-modal-content .btn-close:focus {
+  box-shadow: none;
 }
 
 .footer {
@@ -819,9 +964,38 @@ a:focus {
 }
 
 .footer-icons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
   padding: 0 !important;
+}
+
+.footer-icons .social-icons {
+  display: inline-flex !important;
+  margin: 0;
+}
+
+.footer-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--stroke);
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1f1f1f !important;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.footer-icons a:hover {
+  transform: translateY(-2px);
+  background-color: #f0ece5;
 }
 
 @media (max-width: 992px) {
@@ -875,6 +1049,16 @@ a:focus {
 
   .query-heading {
     font-size: 2rem;
+  }
+
+  .resume-document-shell {
+    padding: 14px 8px;
+  }
+
+  .floating-inquiry-btn {
+    right: 16px;
+    bottom: 16px;
+    padding: 10px 16px !important;
   }
 
   .services-cta-strip {

@@ -18,56 +18,59 @@ import {
   SiKubernetes,
   SiGraphql,
   SiApachekafka,
+  SiNestjs,
+  SiExpress,
+  SiSpring,
+  SiAngular,
+  SiDjango,
+  SiFlask,
+  SiJest,
+  SiHelm,
 } from "react-icons/si";
+
+const techItems = [
+  { label: "C++", icon: <CgCPlusPlus /> },
+  { label: "JavaScript", icon: <DiJavascript1 /> },
+  { label: "TypeScript", icon: <SiTypescript /> },
+  { label: "Python", icon: <DiPython /> },
+  { label: "Java", icon: <DiJava /> },
+  { label: "Node.js", icon: <DiNodejs /> },
+  { label: "Express.js", icon: <SiExpress /> },
+  { label: "NestJS", icon: <SiNestjs /> },
+  { label: "Spring Boot", icon: <SiSpring /> },
+  { label: "React", icon: <DiReact /> },
+  { label: "Angular", icon: <SiAngular /> },
+  { label: "Django", icon: <SiDjango /> },
+  { label: "Flask", icon: <SiFlask /> },
+  { label: "MongoDB", icon: <DiMongodb /> },
+  { label: "Redis", icon: <SiRedis /> },
+  { label: "PostgreSQL", icon: <SiPostgresql /> },
+  { label: "Git", icon: <DiGit /> },
+  { label: "Docker", icon: <SiDocker /> },
+  { label: "Kubernetes", icon: <SiKubernetes /> },
+  { label: "Helm", icon: <SiHelm /> },
+  { label: "GraphQL", icon: <SiGraphql /> },
+  { label: "Kafka", icon: <SiApachekafka /> },
+  { label: "Jest", icon: <SiJest /> },
+];
 
 function Techstack() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-      <Col xs={4} md={2} className="tech-icons">
-        <CgCPlusPlus />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiJavascript1 />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiNodejs />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiReact />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiMongodb />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiGit />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiRedis />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiPostgresql />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiPython />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiJava />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiTypescript />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiDocker />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiKubernetes />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiGraphql />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiApachekafka />
-      </Col>
+      {techItems.map(({ label, icon }) => (
+        <Col
+          key={label}
+          xs={4}
+          md={2}
+          className="tech-icons"
+          data-label={label}
+          title={label}
+          aria-label={label}
+          tabIndex={0}
+        >
+          {icon}
+        </Col>
+      ))}
     </Row>
   );
 }

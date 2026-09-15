@@ -6,13 +6,10 @@ import {
   AiFillInstagram,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
-import QueryForm from "./QueryForm";
 
 function Footer() {
   return (
-    <>
-      <QueryForm />
-      <Container fluid className="footer">
+    <Container fluid className="footer">
       <Row>
         <Col md="4" className="footer-copywright">
           <h3>Shivam Sharma</h3>
@@ -66,7 +63,6 @@ function Footer() {
         </Col>
       </Row>
     </Container>
-    </>
   );
 }
 

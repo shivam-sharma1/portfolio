@@ -5,6 +5,7 @@ import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
 import { Link } from "react-router-dom";
+import { openInquiryModal } from "../FloatingInquiry";
 
 function Home() {
   return (
@@ -37,9 +38,13 @@ function Home() {
                 <Link to="/expertise" className="hero-cta-primary">
                   View Expertise
                 </Link>
-                <Link to="/project" className="hero-cta-secondary">
-                  View Case Studies
-                </Link>
+                <button
+                  type="button"
+                  className="hero-cta-secondary hero-cta-button"
+                  onClick={openInquiryModal}
+                >
+                  Raise Inquiry
+                </button>
               </div>
             </Col>
 

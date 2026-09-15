@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { ImBlog } from "react-icons/im";
 import {
   AiOutlineHome,
-  AiOutlineFundProjectionScreen,
   AiOutlineUser,
 } from "react-icons/ai";
 import { RiUserSettingsLine } from "react-icons/ri";
@@ -74,19 +73,6 @@ function NavBar() {
                 onClick={() => updateExpanded(false)}
               >
                 <RiUserSettingsLine style={{ marginBottom: "2px" }} /> Expertise
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/project"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineFundProjectionScreen
-                  style={{ marginBottom: "2px" }}
-                />{" "}
-                Projects
               </Nav.Link>
             </Nav.Item>
 

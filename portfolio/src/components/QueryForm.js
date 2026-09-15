@@ -3,14 +3,30 @@ import { Container, Row, Col } from "react-bootstrap";
 import { postQuery } from "../services/api";
 
 /**
- * Contact/query form rendered at the bottom of every page.
+ * Project inquiry form used in the floating inquiry modal.
  * Submissions (name, email, message) are stored in the database.
  */
-function QueryForm() {
+function QueryForm({ embedded = false, onSubmitted }) {
+  const currencyOptions = {
+    USD: [
+      { value: "Under $5,000", label: "Under $5,000" },
+      { value: "$5,000 - $15,000", label: "$5,000 - $15,000" },
+      { value: "$15,000 - $40,000", label: "$15,000 - $40,000" },
+      { value: "$40,000+", label: "$40,000+" },
+    ],
+    INR: [
+      { value: "Under ₹5,00,000", label: "Under ₹5,00,000" },
+      { value: "₹5,00,000 - ₹15,00,000", label: "₹5,00,000 - ₹15,00,000" },
+      { value: "₹15,00,000 - ₹40,00,000", label: "₹15,00,000 - ₹40,00,000" },
+      { value: "₹40,00,000+", label: "₹40,00,000+" },
+    ],
+  };
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     focusArea: "",
+    currency: "",
     budget: "",
     timeline: "",
     message: "",
@@ -18,8 +34,19 @@ function QueryForm() {
   const [status, setStatus] = useState({ type: "", text: "" });
   const [submitting, setSubmitting] = useState(false);
 
-  const handleChange = (e) =>
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm((prev) => {
+      const next = { ...prev, [name]: value };
+
+      if (name === "currency") {
+        next.budget = "";
+      }
+
+      return next;
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +61,7 @@ function QueryForm() {
     try {
       const composedMessage = [
         `Focus area: ${form.focusArea}`,
+        `Currency: ${form.currency || "Not specified"}`,
         `Budget range: ${form.budget || "Not specified"}`,
         `Expected timeline: ${form.timeline || "Not specified"}`,
         "",
@@ -50,11 +78,15 @@ function QueryForm() {
         name: "",
         email: "",
         focusArea: "",
+        currency: "",
         budget: "",
         timeline: "",
         message: "",
       });
       setStatus({ type: "success", text: "Thanks! Your message has been sent." });
+      if (onSubmitted) {
+        onSubmitted();
+      }
     } catch {
       setStatus({ type: "error", text: "Something went wrong. Please try again." });
     } finally {
@@ -62,17 +94,20 @@ function QueryForm() {
     }
   };
 
-  return (
-    <Container fluid className="query-section" id="contact">
-      <Container>
+  const budgetOptions = form.currency ? currencyOptions[form.currency] || [] : [];
+
+  const formBody = (
+    <>
+      <div className={embedded ? "query-panel-header" : undefined}>
         <h2 className="query-heading">
           Project <strong className="purple">Inquiry</strong>
         </h2>
         <p className="query-subheading">
           Share project scope, timeline, and technical context.
         </p>
-        <Row className="justify-content-center">
-          <Col md={7}>
+      </div>
+      <Row className="justify-content-center">
+        <Col md={embedded ? 12 : 7}>
             <form className="query-form" onSubmit={handleSubmit}>
               <div className="query-form-row">
                 <input
@@ -96,6 +131,7 @@ function QueryForm() {
                   value={form.focusArea}
                   onChange={handleChange}
                   required
+                  aria-label="Focus area"
                 >
                   <option value="">Select focus area</option>
                   <option value="Software Design and Development">
@@ -116,15 +152,28 @@ function QueryForm() {
               </div>
               <div className="query-form-row">
                 <select
+                  name="currency"
+                  value={form.currency}
+                  onChange={handleChange}
+                  aria-label="Currency"
+                >
+                  <option value="">Select currency</option>
+                  <option value="USD">USD</option>
+                  <option value="INR">INR</option>
+                </select>
+                <select
                   name="budget"
                   value={form.budget}
                   onChange={handleChange}
+                  aria-label="Budget"
+                  disabled={!form.currency}
                 >
-                  <option value="">Estimated budget</option>
-                  <option value="Under $5,000">Under $5,000</option>
-                  <option value="$5,000 - $15,000">$5,000 - $15,000</option>
-                  <option value="$15,000 - $40,000">$15,000 - $40,000</option>
-                  <option value="$40,000+">$40,000+</option>
+                  <option value="">{form.currency ? `Estimated budget (${form.currency})` : "Estimated budget"}</option>
+                  {budgetOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
                 </select>
                 <input
                   type="text"
@@ -149,9 +198,18 @@ function QueryForm() {
                 {submitting ? "Sending..." : "Send Message"}
               </button>
             </form>
-          </Col>
-        </Row>
-      </Container>
+        </Col>
+      </Row>
+    </>
+  );
+
+  if (embedded) {
+    return <div className="query-panel">{formBody}</div>;
+  }
+
+  return (
+    <Container fluid className="query-section" id="contact">
+      <Container>{formBody}</Container>
     </Container>
   );
 }

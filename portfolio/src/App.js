@@ -3,11 +3,11 @@ import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
 import Blogs from "./components/Blogs/Blogs";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import Expertise from "./components/Services/Services";
+import FloatingInquiry from "./components/FloatingInquiry";
 import {
   HashRouter as Router,
   Route,
@@ -40,12 +40,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/expertise" element={<Expertise />} />
           <Route path="/services" element={<Navigate to="/expertise" />} />
-          <Route path="/project" element={<Projects />} />
+          <Route path="/project" element={<Navigate to="/expertise" />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
+        <FloatingInquiry />
         <Footer />
       </div>
     </Router>

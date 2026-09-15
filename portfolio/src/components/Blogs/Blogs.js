@@ -8,25 +8,44 @@ import { getBlogCategories } from "../../services/api";
 function Blogs() {
   const [categories, setCategories] = useState({});
   const [activeSlug, setActiveSlug] = useState("");
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
     let active = true;
+
+    setLoading(true);
+    setError("");
+
     getBlogCategories()
       .then((data) => {
         if (!active) return;
-        setCategories(data);
-        // Auto-select the first available blog.
-        const firstCategory = Object.keys(data)[0];
-        if (firstCategory && data[firstCategory][0]) {
-          setActiveSlug(data[firstCategory][0].slug);
-        }
+
+        const normalized = data || {};
+        setCategories(normalized);
+
+        const firstCategory = Object.keys(normalized)[0];
+        const firstBlog = firstCategory ? normalized[firstCategory]?.[0] : null;
+
+        setActiveSlug((currentSlug) => {
+          if (currentSlug) {
+            const hasCurrentSlug = Object.values(normalized).some((items = []) =>
+              items.some((blog) => blog.slug === currentSlug)
+            );
+            if (hasCurrentSlug) return currentSlug;
+          }
+          return firstBlog ? firstBlog.slug : "";
+        });
       })
-      .catch(() => active && setError("Could not load blogs."));
+      .catch(() => active && setError("Could not load blogs."))
+      .finally(() => active && setLoading(false));
+
     return () => {
       active = false;
     };
   }, []);
+
+  const hasBlogs = Object.keys(categories).length > 0;
 
   return (
     <Container fluid className="blog-section">
@@ -37,7 +56,12 @@ function Blogs() {
         </h1>
         <p style={{ color: "white" }}>Thoughts on science, technology and more.</p>
 
+        {loading && !error && !hasBlogs && <p style={{ color: "white" }}>Loading blogs...</p>}
         {error && <p style={{ color: "white" }}>{error}</p>}
+
+        {!loading && !error && !hasBlogs && (
+          <p style={{ color: "white" }}>No blogs published yet.</p>
+        )}
 
         <Row className="blog-layout">
           <Col md={3} className="blog-sidebar-col">
