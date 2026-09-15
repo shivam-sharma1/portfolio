@@ -16,41 +16,45 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+              Professional <span className="purple">Skillset</span>
             </h1>
             <p className="home-about-body">
-              I fell in love with programming and I have at least learnt
-              something, I think… 🤷‍♂️
+              I build robust software systems with a strong focus on architecture,
+              code quality, and operational reliability.
               <br />
-              <br />I am fluent in classics like
+              <br />Core strengths include
               <i>
-                <b className="purple"> C++, Java, JavaScript, Python. </b>
+                <b className="purple"> JavaScript, TypeScript, Node.js, React, Java, Python, SQL, and cloud-native engineering </b>
               </i>
+              across modern product and platform teams.
               <br />
-              <br />
-              My field of Interest's are building new &nbsp;
+              <br />I regularly work on
               <i>
-                <b className="purple">Web Technologies and Products </b> and
-                also in areas related to{" "}
                 <b className="purple">
-                  Machine learning.
+                  software architecture, distributed systems, API design,
+                  CI/CD, infrastructure automation, and observability.
                 </b>
               </i>
               <br />
               <br />
-              Whenever possible, I also apply my passion for developing products
-              with <b className="purple">Node.js</b> and
-              <i>
-                <b className="purple">
-                  {" "}
-                  Modern Javascript Library and Frameworks
-                </b>
-              </i>
-              &nbsp; like
-              <i>
-                <b className="purple"> React.js and Next.js</b>
-              </i>
+              Current focus areas also include performance optimization,
+              security-by-design, testing strategy, and engineering productivity.
             </p>
+
+            <div className="credibility-grid">
+              <div className="credibility-item">
+                <h3>End-to-End Delivery</h3>
+                <p>Architecture, implementation, release, and operational stability.</p>
+              </div>
+              <div className="credibility-item">
+                <h3>Architecture Depth</h3>
+                <p>API-first systems, distributed patterns, and cloud-native design.</p>
+              </div>
+              <div className="credibility-item">
+                <h3>Engineering Rigor</h3>
+                <p>Testing, observability, and maintainable long-term codebases.</p>
+              </div>
+            </div>
           </Col>
           <Col md={4} className="myAvtar">
             <Tilt>
@@ -60,9 +64,9 @@ function Home2() {
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
+            <h1>Connect</h1>
             <p>
-              Feel free to <span className="purple">connect </span>with me
+              Reach out for technical collaboration and engineering discussions.
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">

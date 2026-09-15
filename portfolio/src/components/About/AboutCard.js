@@ -11,7 +11,7 @@ function AboutCard() {
             Hi Everyone, I am <span className="purple">Shivam Sharma </span>
             from <span className="purple"> Jaipur(Raj.), India.</span>
             <br />
-            I am currently employed as a Sr. Software Engineer at BMW Techworks India and living in Pune.
+            I build software systems with enterprise engineering experience across high-impact product teams.
             <br />
             I have completed B.Tech in Computer Science and Engineering from JUET, Guna.
             <br />

@@ -7,6 +7,7 @@ import Projects from "./components/Projects/Projects";
 import Blogs from "./components/Blogs/Blogs";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
+import Expertise from "./components/Services/Services";
 import {
   HashRouter as Router,
   Route,
@@ -37,6 +38,8 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/expertise" element={<Expertise />} />
+          <Route path="/services" element={<Navigate to="/expertise" />} />
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs" element={<Blogs />} />

@@ -13,6 +13,11 @@ import {
 import {
   SiRedis,
   SiPostgresql,
+  SiTypescript,
+  SiDocker,
+  SiKubernetes,
+  SiGraphql,
+  SiApachekafka,
 } from "react-icons/si";
 
 function Techstack() {
@@ -47,6 +52,21 @@ function Techstack() {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <DiJava />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiTypescript />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiDocker />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiKubernetes />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiGraphql />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiApachekafka />
       </Col>
     </Row>
   );
