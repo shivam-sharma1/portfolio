@@ -829,6 +829,11 @@ a:focus {
   min-width: 180px;
 }
 
+.query-phone-country {
+  flex: 1;
+  min-width: 240px;
+}
+
 .blog-comment-form input,
 .blog-comment-form textarea,
 .query-form input,
@@ -856,6 +861,75 @@ a:focus {
 .query-form textarea:focus,
 .query-form select:focus {
   border-color: #222;
+}
+
+.query-phone-select__control {
+  min-height: 44px !important;
+  border: 1px solid var(--stroke) !important;
+  border-radius: 2px !important;
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.query-phone-select__control--is-focused {
+  border-color: #222 !important;
+}
+
+.query-phone-select__value-container {
+  padding: 4px 12px !important;
+}
+
+.query-phone-select__placeholder {
+  color: #8f8a82 !important;
+}
+
+.query-phone-select__indicator-separator {
+  background-color: var(--stroke) !important;
+}
+
+.query-phone-select__menu {
+  border: 1px solid var(--stroke) !important;
+  border-radius: 2px !important;
+  overflow: hidden;
+}
+
+.query-phone-select__menu-list {
+  padding: 4px !important;
+}
+
+.query-phone-select__option {
+  padding: 10px 12px !important;
+}
+
+.query-phone-select__option--is-focused {
+  background-color: #f1eee8 !important;
+}
+
+.query-phone-select__option--is-selected {
+  background-color: #121212 !important;
+  color: #f6f4ef !important;
+}
+
+.query-phone-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.query-phone-option-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.query-phone-option-flag {
+  font-size: 1rem;
+}
+
+.query-phone-option-code {
+  color: #5d584f;
+  font-size: 0.92em;
 }
 
 .blog-submit-btn,

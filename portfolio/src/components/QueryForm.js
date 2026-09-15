@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import Select from "react-select";
 import { postQuery } from "../services/api";
+import { countryPhoneOptions } from "../data/countryPhoneOptions";
 
 /**
  * Project inquiry form used in the floating inquiry modal.
@@ -25,6 +27,8 @@ function QueryForm({ embedded = false, onSubmitted }) {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phoneCountry: null,
+    phoneNumber: "",
     focusArea: "",
     currency: "",
     budget: "",
@@ -33,6 +37,7 @@ function QueryForm({ embedded = false, onSubmitted }) {
   });
   const [status, setStatus] = useState({ type: "", text: "" });
   const [submitting, setSubmitting] = useState(false);
+  const phonePattern = /^[0-9()\-\s]{6,20}$/;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,19 +53,52 @@ function QueryForm({ embedded = false, onSubmitted }) {
     });
   };
 
+  const handlePhoneCountryChange = (option) => {
+    setForm((prev) => ({ ...prev, phoneCountry: option || null }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ type: "", text: "" });
+
+    const trimmedPhoneNumber = form.phoneNumber.trim();
+    const hasPhoneFields = Boolean(form.phoneCountry) || Boolean(trimmedPhoneNumber);
 
     if (!form.name.trim() || !form.email.trim() || !form.focusArea || !form.message.trim()) {
       setStatus({ type: "error", text: "All fields are required." });
       return;
     }
 
+    if (hasPhoneFields && (!form.phoneCountry || !trimmedPhoneNumber)) {
+      setStatus({
+        type: "error",
+        text: "Add both country code and mobile number, or leave both blank.",
+      });
+      return;
+    }
+
+    if (trimmedPhoneNumber && !phonePattern.test(trimmedPhoneNumber)) {
+      setStatus({
+        type: "error",
+        text: "Use a valid mobile number with 6 to 20 digits and separators only.",
+      });
+      return;
+    }
+
+    const phoneDetails = form.phoneCountry && trimmedPhoneNumber
+      ? {
+          countryIso: form.phoneCountry.value,
+          countryName: form.phoneCountry.countryName,
+          countryCode: form.phoneCountry.dialCode,
+          number: trimmedPhoneNumber,
+        }
+      : null;
+
     setSubmitting(true);
     try {
       const composedMessage = [
         `Focus area: ${form.focusArea}`,
+        `Mobile: ${phoneDetails ? `${phoneDetails.countryCode} ${phoneDetails.number} (${phoneDetails.countryName})` : "Not specified"}`,
         `Currency: ${form.currency || "Not specified"}`,
         `Budget range: ${form.budget || "Not specified"}`,
         `Expected timeline: ${form.timeline || "Not specified"}`,
@@ -71,12 +109,15 @@ function QueryForm({ embedded = false, onSubmitted }) {
       await postQuery({
         name: form.name,
         email: form.email,
+        phone: phoneDetails,
         message: composedMessage,
         source: window.location.pathname,
       });
       setForm({
         name: "",
         email: "",
+        phoneCountry: null,
+        phoneNumber: "",
         focusArea: "",
         currency: "",
         budget: "",
@@ -149,6 +190,52 @@ function QueryForm({ embedded = false, onSubmitted }) {
                   </option>
                   <option value="Software Consultation">Software Consultation</option>
                 </select>
+              </div>
+              <div className="query-form-row">
+                <div className="query-phone-country">
+                  <label className="visually-hidden" htmlFor="phone-country-code">
+                    Country code
+                  </label>
+                  <Select
+                    inputId="phone-country-code"
+                    instanceId="phone-country-code"
+                    aria-label="Country code"
+                    classNamePrefix="query-phone-select"
+                    className="query-phone-country-select"
+                    options={countryPhoneOptions}
+                    value={form.phoneCountry}
+                    onChange={handlePhoneCountryChange}
+                    isClearable
+                    isSearchable
+                    placeholder="Country code (optional)"
+                    noOptionsMessage={() => "No country found"}
+                    formatOptionLabel={(option, { context }) => {
+                      if (context === "value") {
+                        return `${option.flag} ${option.countryName} (${option.dialCode})`;
+                      }
+
+                      return (
+                        <div className="query-phone-option">
+                          <span className="query-phone-option-main">
+                            <span className="query-phone-option-flag">{option.flag}</span>
+                            <span>{option.countryName}</span>
+                          </span>
+                          <span className="query-phone-option-code">{option.dialCode}</span>
+                        </div>
+                      );
+                    }}
+                  />
+                </div>
+                <input
+                  type="tel"
+                  name="phoneNumber"
+                  aria-label="Mobile number"
+                  placeholder="Mobile number (optional)"
+                  value={form.phoneNumber}
+                  onChange={handleChange}
+                  inputMode="tel"
+                  autoComplete="tel-national"
+                />
               </div>
               <div className="query-form-row">
                 <select

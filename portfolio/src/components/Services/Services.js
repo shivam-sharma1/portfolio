@@ -6,52 +6,52 @@ import { openInquiryModal } from "../FloatingInquiry";
 
 const expertiseList = [
   {
-    title: "Software Design and Development",
+    title: "Custom Software Development",
     description:
-      "Custom web platforms, internal tools, and APIs built with maintainable architecture and clean delivery milestones.",
+      "Modern, maintainable platforms and APIs delivered in rapid iteration cycles. Direct collaboration, clear milestones, and outcome-focused delivery without corporate overhead.",
   },
   {
-    title: "Software and Network Architecture",
+    title: "System Architecture & Design",
     description:
-      "System decomposition, API contracts, integration strategy, and resilient infrastructure patterns for growth-ready systems.",
+      "Efficient, scalable system decomposition. API-first design, resilience patterns, and cloud-native architecture that supports growth without rework.",
   },
   {
-    title: "Product and UX Design",
+    title: "AI-Augmented Development",
     description:
-      "Product discovery, interaction flows, wireframes, and practical UX improvements aligned with measurable business outcomes.",
+      "Leverage modern AI tools for faster iteration and higher code quality. Specialized engineering expertise ensures AI outputs remain production-grade and maintainable.",
   },
   {
-    title: "Development and Deployment",
+    title: "Performance & Reliability",
     description:
-      "CI/CD workflows, cloud deployment setup, release hardening, and production readiness for confident go-lives.",
+      "Identify and eliminate bottlenecks. Optimize latency, throughput, and system resilience. Reduce incidents through proactive observability and automation.",
   },
   {
-    title: "Maintenance and Observability",
+    title: "Production Operations & Monitoring",
     description:
-      "Reliability improvements, actionable monitoring, tracing, alerting, and performance optimization to reduce incidents.",
+      "Implement observability-first practices. Structured logging, metrics, tracing, and alerting that enable fast incident response and continuous improvement.",
   },
   {
-    title: "Software Consultation",
+    title: "Technical Strategy & Guidance",
     description:
-      "Architecture reviews, roadmap planning, technical due diligence, and strategic guidance for product and engineering leaders.",
+      "Architecture reviews, roadmap planning, and engineering leadership support. Help product and engineering teams make high-impact technical decisions quickly.",
   },
   {
-    title: "Performance and Reliability Engineering",
+    title: "Quality & Automation",
     description:
-      "Bottleneck analysis, latency optimization, fault tolerance, and stability improvements for production systems.",
+      "End-to-end test strategy, CI/CD optimization, and release hardening. High code quality with fast feedback loops and confident deployments.",
   },
   {
-    title: "Security and Quality Engineering",
+    title: "Cloud & Infrastructure",
     description:
-      "Secure coding practices, test strategy, and release quality controls integrated into development workflows.",
+      "AWS deployment, Kubernetes orchestration, IaC, and automated scaling. Modern infrastructure that supports rapid delivery and operational simplicity.",
   },
 ];
 
 const process = [
-  "Discovery workshop and scope clarity",
-  "Architecture and solution blueprint",
-  "Iterative build in transparent milestones",
-  "Release, monitoring, and long-term support",
+  "Clear scope and architecture blueprint",
+  "Iterative development with transparent milestones",
+  "Continuous quality assurance and testing",
+  "Production release, monitoring, and support",
 ];
 
 function Expertise() {
@@ -62,13 +62,13 @@ function Expertise() {
         <Row className="justify-content-center">
           <Col lg={10}>
             <div className="services-hero">
-              <p className="services-eyebrow">Core Expertise</p>
+              <p className="services-eyebrow">Specialized Engineering</p>
               <h1 className="project-heading">
-                Software Engineering and Architecture Expertise
+                Modern Software Engineering at Speed
               </h1>
               <p className="services-intro">
-                Professional focus across product engineering, architecture, and
-                operational excellence for modern software systems.
+                Direct engagement with a specialized engineer. Rapid delivery, production-grade quality,
+                modern stack, and competitive costs—without traditional consulting overhead.
               </p>
             </div>
           </Col>
@@ -85,10 +85,59 @@ function Expertise() {
           ))}
         </Row>
 
+        <Row className="service-panel-row">
+          <Col md={6} className="service-panel-wrap">
+            <div className="service-panel">
+              <h3>Why This Approach Works</h3>
+              <ul className="service-checklist">
+                <li>
+                  <FiCheckCircle />
+                  <span>Direct collaboration: No layers, no delays, no corporate processes</span>
+                </li>
+                <li>
+                  <FiCheckCircle />
+                  <span>Modern stack with AI-augmented tools for faster iteration</span>
+                </li>
+                <li>
+                  <FiCheckCircle />
+                  <span>Production-grade quality through rigorous engineering practices</span>
+                </li>
+                <li>
+                  <FiCheckCircle />
+                  <span>Specialized expertise: No generalists, only deep technical knowledge</span>
+                </li>
+              </ul>
+            </div>
+          </Col>
+          <Col md={6} className="service-panel-wrap">
+            <div className="service-panel">
+              <h3>Expected Outcomes</h3>
+              <ul className="service-checklist">
+                <li>
+                  <FiCheckCircle />
+                  <span>Faster time-to-market with clear technical milestones</span>
+                </li>
+                <li>
+                  <FiCheckCircle />
+                  <span>Reduced technical debt and production incidents</span>
+                </li>
+                <li>
+                  <FiCheckCircle />
+                  <span>Systems optimized for scale, reliability, and maintainability</span>
+                </li>
+                <li>
+                  <FiCheckCircle />
+                  <span>Competitive cost structure with enterprise-grade quality</span>
+                </li>
+              </ul>
+            </div>
+          </Col>
+        </Row>
+
         <Row className="service-extra-row">
           <Col md={6} className="service-panel-wrap">
             <div className="service-panel">
-              <h3>Engineering Workflow</h3>
+              <h3>How I Work</h3>
               <ul className="service-checklist">
                 {process.map((item) => (
                   <li key={item}>
@@ -101,23 +150,23 @@ function Expertise() {
           </Col>
           <Col md={6} className="service-panel-wrap">
             <div className="service-panel">
-              <h3>Key Outcomes</h3>
+              <h3>Why Choose Direct Engagement</h3>
               <ul className="service-checklist">
                 <li>
                   <FiCheckCircle />
-                  <span>Faster product delivery with clearer priorities</span>
+                  <span>No account managers or middlemen—you work directly with the engineer</span>
                 </li>
                 <li>
                   <FiCheckCircle />
-                  <span>Reduced technical debt and better system clarity</span>
+                  <span>Faster decisions and rapid problem-solving</span>
                 </li>
                 <li>
                   <FiCheckCircle />
-                  <span>Improved uptime, observability, and release confidence</span>
+                  <span>Transparent pricing without corporate markup</span>
                 </li>
                 <li>
                   <FiCheckCircle />
-                  <span>Stronger product experience for users and stakeholders</span>
+                  <span>Custom solutions tailored to your specific needs</span>
                 </li>
               </ul>
             </div>
@@ -126,7 +175,7 @@ function Expertise() {
 
         <div className="services-cta-strip">
           <p>
-            Looking for architecture review or engineering collaboration?
+            Ready to build something great with direct collaboration and modern engineering?
           </p>
           <button
             type="button"

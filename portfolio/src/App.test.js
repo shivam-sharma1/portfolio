@@ -2,13 +2,14 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import ResumeNew from './components/Resume/ResumeNew';
 import QueryForm from './components/QueryForm';
 import Blogs from './components/Blogs/Blogs';
-import { getBlogCategories, getBlogBySlug } from './services/api';
+import { getBlogCategories, getBlogBySlug, postQuery } from './services/api';
 
 jest.mock('./components/Particle', () => () => <div data-testid="particle" />);
 jest.mock('./components/Blogs/Comments', () => () => <div>Comments</div>);
 jest.mock('./services/api', () => ({
   getBlogCategories: jest.fn(),
   getBlogBySlug: jest.fn(),
+  postQuery: jest.fn(),
 }));
 
 test('resume download button saves the pdf with the correct name instead of opening a new tab', () => {
@@ -30,6 +31,40 @@ test('inquiry form updates budget options when currency is changed', () => {
 
   expect(screen.getByRole('option', { name: /under ₹5,00,000/i })).toBeInTheDocument();
   expect(screen.queryByRole('option', { name: /under \$5,000/i })).not.toBeInTheDocument();
+});
+
+test('inquiry form renders optional mobile fields and still allows submission without them', async () => {
+  postQuery.mockResolvedValue({ ok: true });
+
+  render(<QueryForm />);
+
+  expect(screen.getByLabelText(/country code/i)).toBeInTheDocument();
+  expect(screen.getByLabelText(/mobile number/i)).toBeInTheDocument();
+
+  fireEvent.change(screen.getByPlaceholderText(/name/i), {
+    target: { value: 'Shivam Sharma' },
+  });
+  fireEvent.change(screen.getByPlaceholderText(/email/i), {
+    target: { value: 'shivam@example.com' },
+  });
+  fireEvent.change(screen.getByRole('combobox', { name: /focus area/i }), {
+    target: { value: 'Software Consultation' },
+  });
+  fireEvent.change(
+    screen.getByPlaceholderText(/briefly describe your product, current challenge, and what success looks like/i),
+    {
+      target: { value: 'Need help with platform architecture.' },
+    }
+  );
+
+  fireEvent.click(screen.getByRole('button', { name: /send message/i }));
+
+  expect(await screen.findByText(/thanks! your message has been sent/i)).toBeInTheDocument();
+  expect(postQuery).toHaveBeenCalledWith(
+    expect.objectContaining({
+      phone: null,
+    })
+  );
 });
 
 test('blogs page selects the first available blog after loading categories', async () => {

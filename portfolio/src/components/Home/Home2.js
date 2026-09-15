@@ -10,43 +10,43 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              Professional <span className="purple">Skillset</span>
+              Modern <span className="purple">Engineering Approach</span>
             </h1>
             <p className="home-about-body">
-              I build robust software systems with a strong focus on architecture,
-              code quality, and operational reliability.
+              I build production-grade software systems combining specialized expertise,
+              rigorous engineering practices, and AI-augmented development for rapid, high-quality delivery.
               <br />
               <br />Core strengths include
               <i>
-                <b className="purple"> JavaScript, TypeScript, Node.js, React, Java, Python, SQL, and cloud-native engineering </b>
+                <b className="purple"> JavaScript, TypeScript, Node.js, React, Java, Python, SQL, and cloud-native systems </b>
               </i>
-              across modern product and platform teams.
+              with hands-on experience in high-impact product and platform teams.
               <br />
-              <br />I regularly work on
+              <br />I specialize in
               <i>
                 <b className="purple">
-                  software architecture, distributed systems, API design,
-                  CI/CD, infrastructure automation, and observability.
+                  end-to-end delivery, API architecture, distributed systems, CI/CD automation,
+                  production observability, and performance optimization.
                 </b>
               </i>
               <br />
               <br />
-              Current focus areas also include performance optimization,
-              security-by-design, testing strategy, and engineering productivity.
+              Current work emphasizes rapid iteration cycles, security-by-design,
+              quality assurance automation, and engineering efficiency without compromising standards.
             </p>
 
             <div className="credibility-grid">
               <div className="credibility-item">
-                <h3>End-to-End Delivery</h3>
-                <p>Architecture, implementation, release, and operational stability.</p>
+                <h3>Rapid Quality Delivery</h3>
+                <p>Architecture-first, iterative execution from concept through production with measurable outcomes.</p>
               </div>
               <div className="credibility-item">
-                <h3>Architecture Depth</h3>
-                <p>API-first systems, distributed patterns, and cloud-native design.</p>
+                <h3>Modern Systems Design</h3>
+                <p>Distributed-first, API-native, cloud-optimized architectures built for scale and reliability.</p>
               </div>
               <div className="credibility-item">
-                <h3>Engineering Rigor</h3>
-                <p>Testing, observability, and maintainable long-term codebases.</p>
+                <h3>Production Excellence</h3>
+                <p>Observability, automated testing, deployment hardening, and operational sustainability.</p>
               </div>
             </div>
           </Col>

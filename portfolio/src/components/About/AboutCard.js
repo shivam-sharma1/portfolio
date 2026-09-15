@@ -28,31 +28,28 @@ function AboutCard() {
           <div style={sectionStyle}>
             <span style={miniTitleStyle}>Profile</span>
             <p style={{ textAlign: "justify", marginBottom: 0 }}>
-              Hi, I’m <span className="purple">Shivam Sharma</span>, a software engineer based in India.
+              Hi, I'm <span className="purple">Shivam Sharma</span>, a modern software engineer based in India. I combine specialized expertise, AI-augmented development, and rigorous engineering to deliver high-quality software at speed.
             </p>
           </div>
 
           <div style={sectionStyle}>
-            <span style={miniTitleStyle}>Focus</span>
+            <span style={miniTitleStyle}>Approach</span>
             <p style={{ textAlign: "justify", marginBottom: 0 }}>
-              I work across product thinking, backend systems, scalable architecture, and engineering execution.
-              My focus is on building dependable systems that can handle real-world complexity without losing clarity.
+              Direct collaboration, rapid iteration, measurable outcomes. Deep technical expertise in architecture, modern stacks, and production systems. No corporate layers or slow processes.
             </p>
           </div>
 
           <div style={sectionStyle}>
-            <span style={miniTitleStyle}>Engineering Approach</span>
+            <span style={miniTitleStyle}>Why Different</span>
             <p style={{ textAlign: "justify", marginBottom: 0 }}>
-              My work spans API design, cloud deployment, system integration, and performance-focused development.
-              I translate business requirements into reliable technical solutions and help teams deliver with structure.
+              I combine modern engineering practices, AI-augmented tooling, and hands-on expertise to deliver faster than traditional consulting firms. Better code quality, competitive pricing, no corporate markup.
             </p>
           </div>
 
           <div style={sectionStyle}>
-            <span style={miniTitleStyle}>Education</span>
+            <span style={miniTitleStyle}>Background</span>
             <p style={{ textAlign: "justify", marginBottom: 0 }}>
-              I completed my B.Tech in Computer Science and Engineering from JUET, Guna, where I built a strong
-              foundation in software engineering, problem solving, and systems thinking.
+              B.Tech in Computer Science and Engineering from JUET, Guna. Experience with enterprises (BMW, Mercedes-Benz) and early-stage teams building production systems prioritizing architecture, reliability, and efficiency.
             </p>
           </div>
 

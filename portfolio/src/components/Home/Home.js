@@ -15,9 +15,9 @@ function Home() {
         <Container className="home-content">
           <Row>
             <Col md={7} className="home-header">
-              <p className="home-eyebrow">Software Engineer</p>
+              <p className="home-eyebrow">Modern Software Engineer</p>
               <h1 style={{ paddingBottom: 10 }} className="heading">
-                Engineering Scalable Systems with Product-Driven Thinking
+                High-Quality Software Delivery at Speed
               </h1>
 
               <h2 className="heading-name">
@@ -26,8 +26,9 @@ function Home() {
               </h2>
 
               <p className="hero-subtext">
-                I design and build reliable software platforms focused on
-                architecture quality, maintainability, and measurable delivery outcomes.
+                I design and build production-grade software platforms using modern
+                engineering practices and AI-augmented development. Rapid iterations,
+                architectural excellence, and measurable outcomes—without corporate overhead.
               </p>
 
               <div className="hero-type-wrap">
