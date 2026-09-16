@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { getBlogBySlug } from "../../services/api";
+import React from "react";
 import Comments from "./Comments";
 
 function formatDate(value) {
@@ -18,31 +17,7 @@ function formatDate(value) {
  * Renders a single blog's content plus its comment section.
  * Content is treated as plain text and split into paragraphs to avoid XSS.
  */
-function BlogContent({ slug }) {
-  const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    let active = true;
-    if (!slug) {
-      setBlog(null);
-      return undefined;
-    }
-    setLoading(true);
-    setError("");
-    getBlogBySlug(slug)
-      .then((data) => {
-        if (!active) return;
-        setBlog(data);
-      })
-      .catch(() => active && setError("Could not load this blog."))
-      .finally(() => active && setLoading(false));
-    return () => {
-      active = false;
-    };
-  }, [slug]);
-
+function BlogContent({ slug, blog, loading, error }) {
   if (!slug) {
     return (
       <div className="blog-content blog-placeholder">
@@ -52,7 +27,19 @@ function BlogContent({ slug }) {
     );
   }
 
-  if (loading) return <div className="blog-content">Loading...</div>;
+  if (loading) {
+    return (
+      <div className="blog-content blog-skeleton-card" aria-label="Loading blog content">
+        <div className="blog-skeleton-line blog-skeleton-chip" />
+        <div className="blog-skeleton-line blog-skeleton-title" />
+        <div className="blog-skeleton-line blog-skeleton-meta" />
+        <div className="blog-skeleton-block" />
+        <div className="blog-skeleton-line" />
+        <div className="blog-skeleton-line blog-skeleton-line-short" />
+      </div>
+    );
+  }
+
   if (error) return <div className="blog-content">{error}</div>;
   if (!blog) return null;
 

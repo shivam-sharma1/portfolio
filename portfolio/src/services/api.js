@@ -11,6 +11,7 @@ const api = axios.create({
 });
 
 // Blogs
+export const getBlogBootstrap = () => api.get("/blogs/bootstrap").then((r) => r.data);
 export const getBlogCategories = () => api.get("/blogs/categories").then((r) => r.data);
 export const getBlogBySlug = (slug) => api.get(`/blogs/${slug}`).then((r) => r.data);
 

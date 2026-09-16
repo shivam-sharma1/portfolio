@@ -28,12 +28,10 @@ function Comments({ blogId }) {
     getComments(blogId)
       .then((data) => {
         if (active) {
-          console.log("Comments loaded:", data);
           setComments(data);
         }
       })
-      .catch((err) => {
-        console.error("Failed to load comments:", err);
+      .catch(() => {
         if (active) setComments([]);
       });
     return () => {
@@ -53,14 +51,11 @@ function Comments({ blogId }) {
     }
     setSubmitting(true);
     try {
-      console.log("Posting comment for blog:", blogId);
       const created = await postComment(blogId, form);
-      console.log("Comment posted successfully:", created);
       setComments((prev) => [created, ...prev]);
       setForm({ name: "", email: "", message: "" });
       setStatus({ type: "success", text: "Comment posted!" });
-    } catch (err) {
-      console.error("Error posting comment:", err);
+    } catch {
       setStatus({ type: "error", text: "Could not post comment. Try again later." });
     } finally {
       setSubmitting(false);
